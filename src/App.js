@@ -1,24 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+
+import Drawer from './components/navigations/drawer';
+import Appbar from './components/navigations/appbar';
+import Mobile from './components/navigations/mobile';
+
+/* components */
+import Home from './components/pages/home'
+import Comment from './components/pages/comment'
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  return (<Router>
+    <div className='flex flex-row full'>
+      <Drawer />
+      <div className='flex-1 flex flex-col justify-center items-center'>
+        <Appbar />
+        <Mobile />
+        <div className='w-full'>
+
+
+          <Switch>
+            <Route component={Home} path='/' exact />
+            <Route component={Comment} path='/comment' />
+          </Switch>
+
+        </div>
+
+      </div>
+
     </div>
+  </Router>
   );
 }
 
