@@ -7,29 +7,42 @@ import Mobile from './components/navigations/mobile';
 /* components */
 import Home from './components/pages/home'
 import Comment from './components/pages/comment'
+import Login from './components/pages/login';
+import Profile from './components/pages/profile';
+import { AppContext } from './context/context';
+import Settings from './components/pages/settings';
+import Editprofile from './components/pages/editprofile';
 
 
 function App() {
-  return (<Router>
-    <div className='flex flex-row full'>
-      <Drawer />
-      <div className='flex-1 flex flex-col justify-center items-center'>
-        <Appbar />
-        <Mobile />
-        <div className='w-full'>
+  return (
+    <AppContext>
+      <Router>
+        <div className='flex flex-row full '>
+          <Drawer />
+          <div className='flex-1 flex flex-col justify-center items-center'>
+            <Appbar />
+            <Mobile />
+            <div className='w-full'>
 
 
-          <Switch>
-            <Route component={Home} path='/' exact />
-            <Route component={Comment} path='/comment' />
-          </Switch>
+              <Switch>
+                <Route component={Home} path='/' exact />
+                <Route component={Comment} path='/comment' />
+                <Route component={Login} path='/login' />
+                <Route component={Profile} path='/profile' />
+                <Route component={Settings} path='/settings' />
+                <Route component={Editprofile} path='/edit_profile' />
+
+              </Switch>
+
+            </div>
+
+          </div>
 
         </div>
-
-      </div>
-
-    </div>
-  </Router>
+      </Router>
+    </AppContext>
   );
 }
 
